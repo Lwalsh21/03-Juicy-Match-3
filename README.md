@@ -1,8 +1,9 @@
-# Exercise-03d-Shaders
+# 03-Juicy-Match-3
 
 Exercise for MSCH-C220
 
-Adding several shaders and a WorldEnvironment to a simple match-3 game.
+Adding several juicy features like music and sound effects
+along with shaders and partical effects
 
 ## To play
 
@@ -10,6 +11,11 @@ Select and drag tiles using the mouse.
 
 
 ## Implementation
+Music and Sound Effects
+Shaders and Partical Effects
+End Game screen
+Time and Score tracking
+Backgrounds and Falling mechanics
 
 Built using Godot 3.4.2
 
@@ -21,7 +27,6 @@ Built using Godot 3.4.2
  * [Jellee Typeface by Alfredo Marco Pradil](https://fontlibrary.org/en/font/jellee-typeface)
  * [Godot 2D fire shader](https://godotshaders.com/shader/2d-fire/)
  * [Godot Clouds in motion shader](https://godotshaders.com/shader/clouds-in-motion/)
- * [GDQuest Visual Shader Editor in Godot 3.1: Dissolve Shader (tutorial)](https://www.youtube.com/watch?v=sf_Dc4ew3eM)
 
 ## Future Development
 
