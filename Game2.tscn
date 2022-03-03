@@ -1,18 +1,18 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://Grid/grid.gd" type="Script" id=1]
-[ext_resource path="res://Pieces/Piece Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/HUD.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Jellee-Bold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Wav2.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Wav.3.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/coin_small.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Jellee-Bold.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://Assets/background_game.png" type="Texture" id=6]
-[ext_resource path="res://Assets/new_noisetexture.tres" type="Texture" id=7]
-[ext_resource path="res://Assets/Wav2.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Wav.3.wav" type="AudioStream" id=9]
-[ext_resource path="res://Assets/Music.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Assets/Wav.1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/background_game.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Music.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Wav.1.wav" type="AudioStream" id=7]
+[ext_resource path="res://UI/Instructions.gd" type="Script" id=8]
+[ext_resource path="res://Pieces/Piece Background.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/HUD.gd" type="Script" id=10]
+[ext_resource path="res://Grid/grid.gd" type="Script" id=11]
 [ext_resource path="res://UI/Music.gd" type="Script" id=12]
-[ext_resource path="res://UI/Instructions.gd" type="Script" id=13]
+[ext_resource path="res://Assets/new_noisetexture.tres" type="Texture" id=13]
 
 [sub_resource type="VisualShaderNodeScalarFunc" id=3]
 function = 1
@@ -22,7 +22,7 @@ default_input_values = [ 0, 0.0, 1, 0.5 ]
 operator = 2
 
 [sub_resource type="VisualShaderNodeTexture" id=5]
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [sub_resource type="VisualShaderNodeColorConstant" id=6]
 constant = Color( 0.133333, 0.556863, 0.901961, 1 )
@@ -33,7 +33,7 @@ constant = Color( 0.133333, 0.556863, 0.901961, 1 )
 input_name = "uv"
 
 [sub_resource type="VisualShaderNodeTexture" id=9]
-texture = ExtResource( 7 )
+texture = ExtResource( 13 )
 
 [sub_resource type="VisualShaderNodeScalarOp" id=10]
 operator = 1
@@ -134,15 +134,15 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 4, 1, 3, 0, 4, 0, 4, 0, 0, 0, 5
 shader = SubResource( 13 )
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 5 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=16]
 size = 24
-font_data = ExtResource( 5 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 24
-font_data = ExtResource( 5 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Environment" id=15]
 background_mode = 4
@@ -157,33 +157,33 @@ glow_bicubic_upscale = true
 [node name="Game" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 576, 1024 )
 
 [node name="Shader" type="Sprite" parent="."]
 material = SubResource( 14 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 575, 1024 )
 
 [node name="grid" type="Node2D" parent="."]
-script = ExtResource( 1 )
+script = ExtResource( 11 )
 width = 7
 height = 10
 xStart = 82
 yStart = 832
 offset = 69
-background = ExtResource( 2 )
+background = ExtResource( 9 )
 
 [node name="Effects" type="Node2D" parent="."]
 
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 3 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -228,7 +228,7 @@ pause_mode = 2
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 13 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -245,9 +245,10 @@ __meta__ = {
 margin_right = 576.0
 margin_bottom = 1024.0
 custom_fonts/font = SubResource( 16 )
-text = "Level 1
+text = "Level 2
 
-How many Coins can you score in 90 seconds?
+How long will it take you to 
+Collect 4000 coins?
 "
 align = 1
 valign = 1
@@ -274,18 +275,18 @@ autostart = true
 environment = SubResource( 15 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 6 )
 autoplay = true
 script = ExtResource( 12 )
 
 [node name="1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 7 )
 
 [node name="2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 2 )
 
 [node name="3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 3 )
 
 [connection signal="timeout" from="HUD/Timer" to="HUD" method="_on_Timer_timeout"]
 [connection signal="timeout" from="HUD/Instructions/Countdown" to="HUD/Instructions" method="_on_Countdown_timeout"]

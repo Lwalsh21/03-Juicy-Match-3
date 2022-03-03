@@ -3,7 +3,19 @@ extends Node
 var camera = null
 
 var score = 0
-signal changed
+var time = 0
+
+var level = 1
+
+var level2_time
+var level1_score
+
+var level1_default = 90
+var level2_default = 4000
+
+signal score_changed
+signal time_changed
+
 var scores = {
 	0:0,
 	1:0,
@@ -18,7 +30,9 @@ var scores = {
 }
 
 func _ready():
-	randomize()	
+	if level == 1:
+		time = level1_default
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("menu"):
@@ -26,4 +40,20 @@ func _unhandled_input(event):
 
 func change_score(s):
 	score += s
-	emit_signal("changed")
+	if level == 2:
+		if score >= level2_default:
+			level2_time = time
+			get_tree().change_scene("res://UI/End_Game.tscn")
+	emit_signal("score_changed")
+
+func change_time():
+	if level == 1:
+		time -= 1
+		if time <= 0:
+			level1_score = score
+			level = 2
+			time = 0
+			get_tree().change_scene("res://Game2.tscn")
+	else:
+		time += 1
+	emit_signal("time_changed")
